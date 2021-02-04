@@ -1,3 +1,8 @@
+"""
+# Números racionales
+Implementación realizada a partir de los apuntes del profesor correspondientes
+a la unidad "Abstracción de datos".
+"""
 from math import gcd
 
 
