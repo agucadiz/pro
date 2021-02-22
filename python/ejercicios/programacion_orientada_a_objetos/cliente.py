@@ -1,7 +1,13 @@
-# Clase Clientes
-# Los clientes son TITULARES de una o varias cuentas
-
 class Cliente:
+    """
+        # Cliente (Clase)
+        Genera instancias que almacenan la información de los clientes.
+        Los clientes son TITULARES de una o varias cuentas
+        ## Atribs:
+        - dni -> str
+        - nombre -> str
+        - apellidos -> str
+    """
 
     def __init__(self, dni, nombre, apellidos):
         self.__dni = dni

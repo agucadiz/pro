@@ -1,28 +1,22 @@
-"""
-Clase estática basada en la de interacción entre cuentas
-Los movimientos son INMUTABLES, por lo que cada movimiento estará dentro de una tupla.
-Los movimientos pertenecen a una sola cuenta
-"""
-
 class Movimiento:
+    """
+        # Movimiento (Clase)
+        Los movimientos son INMUTABLES, por lo que no tendrán métodos mutadores
+        Los movimientos pertenecen a una sola cuenta
+        ## Atribs:
+        - concepto -> str (inmutable)
+        - cantidad -> int (inmutable, puede ser un valor negativo o positivo)
+    """
 
-    @staticmethod
-    def generar_movimiento(concepto, cantidad):
-        """Devuelve una tupla con la estructura (concepto, cantidad)"""
-        __concepto = concepto
-        __cantidad = cantidad
-        return (__concepto, __cantidad)
+    def __init__(self, concepto, cantidad):
+        self.__concepto = concepto
+        self.__cantidad = cantidad
 
-    @staticmethod
-    def cantidad(movimiento):
-        return movimiento[1]
+    def concepto(self):
+        return self.__concepto
 
+    def cantidad(self):
+        return self.__cantidad
 
-
-""" Sample code:
-> >> mov1 = Movimiento.generar_movmiento('dietas', -20)
-> >> mov1
-('dietas', -20)
-> >> Movimiento.cantidad(mov1)
--20
-"""
+    def __repr__(self):
+        return f'Movimiento (Concepto: {self.__concepto} , Cantidad: {self.__cantidad})'

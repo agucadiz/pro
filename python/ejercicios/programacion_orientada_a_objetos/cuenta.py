@@ -1,3 +1,4 @@
+from movimiento import Movimiento
 """
 Clase que controla las cuentas
 Detalles:
@@ -11,12 +12,29 @@ from movimiento import Movimiento
 
 
 class Cuenta:
+    """
+        # Cuenta (Clase)
+        Genera instancias de cuentas, asignadas a un cliente (titular)
+        ## Atribs:
+        - numero -> int (inmutable)
+        - titular -> Cliente
+        - saldo -> int (incializado a 0€)
 
-    def __init__(self, numero, titular, saldo):
-        self.__numero = numero      # sin mutador (1)
+    """
+    __ultimo = 0
+    __cuentas = {}      # Patrón ActiveRecord. La clase almacena las instancias
+
+    def __init__(self, titular):
+        Cuenta.__ultimo += 1
+        self.__numero = Cuenta.__ultimo      # sin mutador (1)
         self.__titular = titular    # recibe instancia de la clase Cliente
         self.__movimientos = []     # lista vacía
-        self.__saldo = saldo
+        self.__saldo = 0
+        Cuenta.__cuentas[self.__numero] = self
+
+    @staticmethod
+    def get_cuenta(numero):
+        return Cuenta.__cuentas.get(numero)
 
     def numero(self):
         return self.__numero
@@ -34,9 +52,9 @@ class Cuenta:
         self.__saldo = saldo
 
     def realizar_movimiento(self, concepto, cantidad):
-        mov = Movimiento.generar_movimiento(concepto, cantidad)
+        mov = Movimiento(concepto, cantidad)
         self.__agregar_movimiento(mov)
-        self.__set_saldo(Movimiento.cantidad(mov))
+        self.__set_saldo(self.saldo() + mov.cantidad())
 
     def __agregar_movimiento(self,movimiento):
         self.__movimientos.append(movimiento)
