@@ -2,9 +2,9 @@ from cliente import Cliente
 from cuenta import Cuenta
 import movimiento
 
-""""
+"""
 Clase principal
-""""
+"""
 
 jorge = Cliente('22233344A', 'Jorge', 'López')
 
