@@ -1,8 +1,8 @@
 class Movimiento:
     """
         # Movimiento (Clase)
-        Los movimientos son INMUTABLES, por lo que no tendrán métodos mutadores
-        Los movimientos pertenecen a una sola cuenta
+        Los movimientos son INMUTABLES, por lo que no podrán cambiar
+        su estado una vez inicializados, y sólo pertenecen a una cuenta.
         ## Atribs:
         - concepto -> str (inmutable)
         - cantidad -> int (inmutable, puede ser un valor negativo o positivo)
