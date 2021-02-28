@@ -2,14 +2,19 @@ from articulo import Articulo
 from cliente import Cliente
 from factura import Factura
 
+def principal():
+    lucia = Cliente('111222333A', 'Rosa', 'González')
 
-lucia = Cliente('111222333A', 'Lucía', 'Peña')
+    tele = Articulo('Televisor', 399)
 
-tele = Articulo('Televisor', 399)
+    grafica = Articulo('Tarjeta Gráfica', 239)
 
-factura1 = Factura(lucia)
+    factura1 = Factura(lucia)
 
-factura1.anyadir_articulo(tele, 2)
+    factura1.agregar_linea(tele, 2)
+    factura1.agregar_linea(grafica, 1)
 
-# factura1.total() = 798 € - Pensamiento optimista
-factura1.importe_total()
+    print(factura1)
+
+if __name__ == "__main__":
+    principal()

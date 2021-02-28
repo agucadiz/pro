@@ -7,17 +7,17 @@ class Cliente:
             - nombre -> str
             - apellidos -> str
     """
-    clientes = {}   # Patrón Active record
+    __clientes = {}   # Patrón Active record
 
     def __init__(self, dni, nombre, apellidos):
         self.__dni = dni
         self.__nombre = nombre
         self.__apellidos = apellidos
-        Cliente.clientes[dni] = self
+        Cliente.__clientes[dni] = self
 
     @staticmethod
-    def get_cliente(numero):
-        return Cliente.clientes.get(numero)
+    def get_cliente(dni):
+        return Cliente.__clientes.get(dni)
 
     def dni(self):
         return self.__dni
@@ -29,7 +29,7 @@ class Cliente:
         return self.__apellidos
 
     def __repr__(self):
-        return f'Cliente ({self.__nombre} {self.__apellidos}, DNI: {self.__dni})'
+        return f'Cliente: {self.__nombre} {self.__apellidos}, DNI: {self.__dni}'
 
 
 
