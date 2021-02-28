@@ -33,4 +33,4 @@ class Articulo:
     # ActiveRecord
     @staticmethod
     def get_articulo(numero):
-        return Cliente.clientes.get(numero)
+        return Articulo.clientes.get(numero)
