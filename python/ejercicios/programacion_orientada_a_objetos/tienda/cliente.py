@@ -1,39 +1,42 @@
 class Cliente:
     """
-        # Cliente (Clase)
-        Clientes registrados en la tienda
-        - Atributos:
-            - dni -> str
-            - nombre -> str
-            - apellidos -> str
+    Clase Cliente
+    ---
+    La clase Cliente representa y almacena los clientes de una tienda, compuestos por su DNI, nombre y apellidos.
     """
     __clientes = {}   # Patrón Active record
 
     def __init__(self, dni, nombre, apellidos):
+        """Constructor de la clase Cliente"""
         self.__dni = dni
         self.__nombre = nombre
         self.__apellidos = apellidos
         Cliente.__clientes[dni] = self
 
-    @staticmethod
-    def get_cliente(dni):
-        return Cliente.__clientes.get(dni)
-
-    def dni(self):
-        return self.__dni
-
-    def nombre(self):
-        return self.__nombre
-
-    def apellidos(self):
-        return self.__apellidos
-
     def __repr__(self):
         return f'Cliente: {self.__nombre} {self.__apellidos}, DNI: {self.__dni}'
 
+    @staticmethod
+    def get_cliente(dni):
+        """
+        Devuelve un cliente existente en el registro a partir de su DNI.
 
+        Parámetros:
+        dni: str -> el DNI del cliente a buscar
+        """
+        return Cliente.__clientes.get(dni)
 
+    def dni(self):
+        """Devuelve el DNI del cliente."""
+        return self.__dni
 
+    def nombre(self):
+        """Devuelve el nombre del cliente."""
+        return self.__nombre
+
+    def apellidos(self):
+        """Devuelve los apellidos del cliente."""
+        return self.__apellidos
 
 
 """class Alumno(Cliente):
