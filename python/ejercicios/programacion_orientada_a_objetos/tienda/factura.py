@@ -35,11 +35,10 @@ class Factura:
         """
         return Factura.__facturas.get(codigo)
 
-    '''
     def lineas(self):
         """Devuelve el registro de líneas pertenecientes a la factura."""
         return self.__lineas
-    '''
+
     def codigo(self):
         """Devuelve el código de la factura."""
         return self.__codigo
@@ -58,17 +57,17 @@ class Factura:
         """
         self.__ultima_linea += 1
         linea = Linea(articulo, cantidad)
-        self.__lineas[self.__ultima_linea] = linea
+        self.lineas()[self.__ultima_linea] = linea
 
     def borrar_linea(self):
         """Elimina la última línea añadida a la factura."""
-        del self.__lineas[self.__ultima_linea]
+        del self.lineas()[self.__ultima_linea]
         self.__ultima_linea -= 1
 
     def importe_total(self):
         """Calcula y devuelve el importe total de la factura."""
         importe = 0
-        for linea in self.__lineas.values():
+        for linea in self.lineas().values():
             importe += linea.subtotal()
         return importe
 
