@@ -4,19 +4,28 @@ VIDA_INICIAL = 4
 
 class Jugador:
 
-    __jugadores = []
+    __ultimo = 0
+    __jugadores = {}
 
     def __init__(self, nombre, vida, bot):
-        self.__nombre = nombre
-        self.__vida = vida
-        self.__bot = bot
-        Jugador.__jugadores.append(self)
+        Jugador.__ultimo += 1
+        if Jugador.comprobar_nombre(nombre) is True:
+            self.__numero = self.__ultimo
+            self.__nombre = nombre
+            self.__vida = vida
+            self.__bot = bot
+            Jugador.__jugadores[self.__numero] = self
+        else:
+            print('Lo sentimos, pero ya existe un jugador con el nombre "'+ nombre +'".')
 
     def __repr__(self):
         return f'Jugador({self.__nombre}, {self.__vida}, {self.__bot})'
 
     def __str__(self):
         return f'{self.nombre()} | Salud: {self.vida()}'
+
+    def numero(self):
+        return self.__numero
 
     def nombre(self):
         return self.__nombre
@@ -26,9 +35,6 @@ class Jugador:
 
     def bot(self):
         return self.__bot
-
-    def set_bot(self, bot):
-        self.__bot = bot
 
     @staticmethod
     def jugadores():
@@ -44,14 +50,22 @@ class Jugador:
         return nombres[aleatorio(0, (len(nombres) - 1))]
 
     @staticmethod
+    def comprobar_nombre(nombre):
+        resultado = True
+        for i in Jugador.jugadores().values():
+            if nombre == i.nombre():
+                resultado = False
+        return resultado
+
+    @staticmethod
     def asignar_humanos(num_jugadores):
         """Creador interactivo de humanos. Solicita por entrada el nombre del jugador."""
         for i in range(num_jugadores):
             try:
                 nombre_jugador = str(input('¿Nombre del jugador?: '))
-                Humano(nombre_jugador)
             except ValueError:
                 print('Por favor, elige una opción válida.')
+            Humano(nombre_jugador)
 
     @staticmethod
     def asignar_bots(num_bots):
