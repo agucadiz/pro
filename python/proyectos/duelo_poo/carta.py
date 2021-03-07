@@ -94,20 +94,6 @@ class Naipe(Carta):
     def __repr__(self):
         return f"Naipe('{self.valor()}', '{self.palo()}')"
 
-    def palo(self):
-        """"Devuelve el palo de un naipe."""
-        return self.__palo
-
-    def valor(self):
-        """Devuelve el valor de un naipe."""
-        return self.__valor
-
-    def calcular_valor(naipe1, naipe2):
-        """Compara dos cartas y devuelve la de valor superior."""
-        if naipe1.valor() > naipe2.valor():
-            return naipe1
-        else: return naipe2
-
     @staticmethod
     def generar_baraja():
         """Genera una baraja de naipes española de 40 cartas."""
@@ -124,7 +110,7 @@ class Naipe(Carta):
         La descripción corta de un naipe tiene esta composición:
             - El primer caracter del palo : 'Bastos'[0] -> 'B'
             - El literal del valor : 7 -> '7'
-        Ejemplo: 'Rey de Bastos' -> 'B10'
+        Ejemplo: 'Rey de Bastos' ->'B10'
         """
         palo = palo[0]
         valor = str(valor)
@@ -138,12 +124,36 @@ class Naipe(Carta):
 
     @staticmethod
     def mostrar_naipes():
-        """Descubre todas las naipes de de la baraja, devolviendo su descripción."""
+        """Descubre todas las naipes de de la baraja, devolviendo su descripción corta y larga."""
         resultado = ' - '
         for naipe in Naipe.baraja().values():
-            resultado += (f'{naipe.larga()},  ')
-
+            resultado += (f'[{naipe.corta()}] - {naipe.larga()}, ')
         return resultado
+
+    @staticmethod
+    def repartir(cantidad):
+        aux = {}
+        while cantidad > 0:
+            for numero in Naipe.baraja():
+                aux[numero] = Naipe.get_carta(numero)
+                del Naipe.baraja()[numero]
+                break
+            cantidad -= 1
+        return aux
+
+    def palo(self):
+        """"Devuelve el palo de un naipe."""
+        return self.__palo
+
+    def valor(self):
+        """Devuelve el valor de un naipe."""
+        return self.__valor
+
+    def calcular_valor(naipe1, naipe2):
+        """Compara dos cartas y devuelve la de valor superior."""
+        if naipe1.valor() > naipe2.valor():
+            return naipe1
+        else: return naipe2
 
 '''
 class Yugi(Carta):

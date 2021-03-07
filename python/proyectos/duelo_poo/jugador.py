@@ -15,6 +15,7 @@ class Jugador:
             self.__vida = vida
             self.__bot = bot
             Jugador.__jugadores[self.__numero] = self
+            mano = {}
         else:
             print('Lo sentimos, pero ya existe un jugador con el nombre "'+ nombre +'".')
 
