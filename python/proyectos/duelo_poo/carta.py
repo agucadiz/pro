@@ -168,11 +168,11 @@ if __name__ == "__main__":
     print(f'Primero vamos a desempolvar la baraja, y vamos a poner todas nuestras cartas boca arriba:\n{Naipe.mostrar_baraja()}\n')
 
     print(f'Impecable y ordenada. Un detalle interesante es que puedo obtener en todo momento una carta a partir de su posición. Por ejemplo, la carta en la posición 28 es: {Naipe.get_carta(28)}\n')
-    print(f'O mejo aún, podemos obtener una descripción literal de que carta se trata, por ejemplo, de la carta 17: {Naipe.get_carta(28).describir()}\n')
+    print(f'O mejor aún, podemos obtener una descripción literal de que carta se trata, por ejemplo, de la carta 17: {Naipe.get_carta(17).describir()}\n')
 
     print('También podemos hacer algo muy interesante. Comparar dos cartas. Comparamos sus valores y nos devuelve la de mayor valor.')
     print(f'Vamos por ejemplo a comparar las dos cartas que hemos obervado antes, la sota de espadas y el 7 de copas: {Naipe.comparar_naipes(Naipe.get_carta(28), Naipe.get_carta(17))}')
-    print('Como era de esperar, nos devuelve la sota, por tener un valor mayor. (8 > 7)') # Más adelante incluiré el factor de la "vira", que hara que un palo tenga mayor valor que el resto de naipes
+    print('Como era de esperar, nos devuelve la sota de Espadas, por tener un valor mayor. (8 > 7)') # Más adelante incluiré el factor de la "vira", que hara que un palo tenga mayor valor que el resto de naipes
 
     print('Ahora vamos a barajar las cartas cuidadosamente...')
     Naipe.barajar()
