@@ -60,8 +60,8 @@ class Carta:
     def mostrar_baraja():
         """Devuelve de todas las cartas de la baraja."""
         resultado = ''
-        for carta in Carta.baraja():
-            resultado += (f'{Carta.describir(carta)}, ')
+        for carta in Carta.baraja().values():
+            resultado += (f'{carta.describir()}, ')
         return resultado
 
     @staticmethod
@@ -71,15 +71,13 @@ class Carta:
         mezclar(temp)
         Carta.__baraja = dict(zip(Carta.baraja(), temp))
 
-    @staticmethod
-    def describir(seleccion):
+    def describir(self):
         """
         Devuelve una descripción completa de una carta de la baraja.\n
         Parámetros:
             - seleccion: int -> La n-ésima carta de la baraja.
         """
-        seleccion = Carta.get_carta(seleccion)
-        return f'[{seleccion.corta()}] - {seleccion.larga()}'
+        return f'[{self.corta()}] - {self.larga()}'
 
 
 class Naipe(Carta):
@@ -170,7 +168,7 @@ if __name__ == "__main__":
     print(f'Primero vamos a desempolvar la baraja, y vamos a poner todas nuestras cartas boca arriba:\n{Naipe.mostrar_baraja()}\n')
 
     print(f'Impecable y ordenada. Un detalle interesante es que puedo obtener en todo momento una carta a partir de su posición. Por ejemplo, la carta en la posición 28 es: {Naipe.get_carta(28)}\n')
-    print(f'O mejo aún, podemos obtener una descripción literal de que carta se trata, por ejemplo, de la carta 17: {Naipe.describir(17)}\n')
+    print(f'O mejo aún, podemos obtener una descripción literal de que carta se trata, por ejemplo, de la carta 17: {Naipe.get_carta(28).describir()}\n')
 
     print('También podemos hacer algo muy interesante. Comparar dos cartas. Comparamos sus valores y nos devuelve la de mayor valor.')
     print(f'Vamos por ejemplo a comparar las dos cartas que hemos obervado antes, la sota de espadas y el 7 de copas: {Naipe.comparar_naipes(Naipe.get_carta(28), Naipe.get_carta(17))}')
@@ -178,7 +176,7 @@ if __name__ == "__main__":
 
     print('Ahora vamos a barajar las cartas cuidadosamente...')
     Naipe.barajar()
-    print(f'Y tras barajar, la carta de la posición 28 ya no es la sota de espadas, ahora es: {Naipe.describir(28)}\n')
+    print(f'Y tras barajar, la carta de la posición 28 ya no es la sota de espadas, ahora es: {Naipe.get_carta(28).describir()}\n')
     print(f'Volvamos a ver la baraja para confirmar que está completamente mezlcada:\n{Naipe.mostrar_baraja()}\n')
 
     """
