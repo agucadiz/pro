@@ -1,4 +1,3 @@
-# ¿Traerme funciones del repartidor aquí?
 from random import shuffle as mezclar
 
 class Carta:
@@ -7,7 +6,7 @@ class Carta:
     ---
     La clase Carta representa y almacena las cartas en una baraja.
     La carta está compuesta por:
-        - corta: str -> Descripción corta de la carta (ej: 'RC')
+        - corta: str -> Descripción corta de la carta (ej: 'C10')
         - larga: str -> Descripción larga de la carta (ej: 'Rey de copas')
 
     Ea la baraja, las cartas se identifican por:
@@ -57,8 +56,16 @@ class Carta:
         return Carta.__baraja
 
     @staticmethod
+    def mostrar_cartas(cartas):
+        """Devuelve una descripción completas de una lista de cartas recibida."""
+        resultado = ''
+        for carta in cartas:
+            resultado += (f'{carta.describir()}, ')
+        return resultado
+
+    @staticmethod
     def mostrar_baraja():
-        """Devuelve de todas las cartas de la baraja."""
+        """Devuelve una descripción completas de todas las cartas de la baraja."""
         resultado = ''
         for carta in Carta.baraja().values():
             resultado += (f'{carta.describir()}, ')
@@ -85,7 +92,7 @@ class Naipe(Carta):
     Clase Naipe
     ---
     La clase Naipe representa cartas de naipes de la baraja española,
-    las cuáles identifican por su palo y su valor.\n
+    las cuáles se identifican por su palo y su valor.\n
     La descripción corta de un naipe tiene esta composición:
         - El primer caracter del palo : 'Bastos'[0] -> 'B'
         - El literal del valor : 7 -> '7'
@@ -96,10 +103,10 @@ class Naipe(Carta):
     """
 
     def __init__(self, palo, valor):
-        super().__init__(Naipe.generar_corta(palo, valor), Naipe.generar_larga(palo, valor))
+        super().__init__(Naipe.generar_corta(palo, valor) \
+            , Naipe.generar_larga(palo, valor))
         self.__palo = palo
         self.__valor = valor
-        # self.
 
     def __repr__(self):
         return f"Naipe('{self.palo()}', '{self.valor()}')"
@@ -115,21 +122,25 @@ class Naipe(Carta):
 
     @staticmethod
     def generar_corta(palo, valor):
-        """Genera una decripción corta de un naipe, a partir de su palo y valor."""
+        """Genera una decripción corta de un naipe, a partir de su
+        palo y valor."""
         palo = palo[0]
         valor = str(valor)
         return palo + valor
 
     @staticmethod
     def generar_larga(palo, valor):
-        """Genera una decripción larga de un naipe, a partir de su palo y valor."""
-        literales = ['Uno', 'Dos', 'Tres', 'Cuatro', 'Cinco', 'Seis', 'Siete','Sota', 'Caballero', 'Rey']
+        """Genera una decripción larga de un naipe, a partir de su
+        palo y valor."""
+        literales = ['Uno', 'Dos', 'Tres', 'Cuatro', 'Cinco', 'Seis'\
+            , 'Siete','Sota', 'Caballero', 'Rey']
         return f'{literales[valor-1]} de {palo}'
 
     '''
     @staticmethod
     def mostrar_naipes():
-        """Descubre todas las naipes de de la baraja, devolviendo su descripción corta y larga."""
+        """Descubre todas las naipes de de la baraja, devolviendo su
+        descripción corta y larga."""
         resultado = ''
         for naipe in Naipe.baraja().values():
             resultado += (f'[{naipe.corta()}] - {naipe.larga()}, ')
@@ -138,11 +149,12 @@ class Naipe(Carta):
 
     @staticmethod
     def repartir(cantidad):
-        """Reparte una cantidad de cartas de la baraja, retirandolas de la misma y devolviéndolas."""
-        aux = {}
+        """Reparte una cantidad de cartas de la baraja, retirandolas de
+        la misma y devolviéndolas."""
+        aux = []
         while cantidad > 0:
             for numero in Naipe.baraja():
-                aux[numero] = Naipe.get_carta(numero)
+                aux.append(Naipe.get_carta(numero))
                 del Naipe.baraja()[numero]
                 break
             cantidad -= 1
