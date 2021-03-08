@@ -1,3 +1,8 @@
+"""
+Sigue existiendo una versión funcional en mi repositositorio "cartas_poo",
+la cuál sigue usando una baraja de tipo diccionario.
+[Enlace] https://github.com/edumarrom/cartas_poo
+"""
 from random import shuffle as mezclar
 
 class Carta:
@@ -15,7 +20,7 @@ class Carta:
         - Su valor, compuesto por una carta.
 
     """
-    __baraja = {}
+    __baraja = []
     __ultima = 0
 
     def __init__(self, corta, larga):
@@ -24,7 +29,8 @@ class Carta:
         self.__numero = Carta.__ultima
         self.__corta = corta
         self.__larga = larga
-        Carta.__baraja[self.__numero] = self
+        # Carta.__baraja[self.__numero] = self
+        Carta.__baraja.append(self)
 
     def __repr__(self):
         return f"Carta('{self.corta()}', '{self.larga()}')"
@@ -36,7 +42,8 @@ class Carta:
         Parámetros:
             - seleccion: int -> La n-ésima carta de la baraja.
         """
-        return Carta.baraja().get(seleccion)
+        # return Carta.baraja().get(seleccion)
+        return Carta.baraja()[seleccion-1]
 
     def numero(self):
         """Devuelve el numero de la carta."""
@@ -50,6 +57,14 @@ class Carta:
         """Devuelve una descripción larga de la carta."""
         return self.__larga
 
+    def describir(self):
+        """
+        Devuelve una descripción completa de la carta.\n
+        Parámetros:
+            - seleccion: int -> La n-ésima carta de la baraja.
+        """
+        return f'[{self.corta()}] - {self.larga()}'
+
     @staticmethod
     def baraja():
         """Devuelve la baraja."""
@@ -57,7 +72,7 @@ class Carta:
 
     @staticmethod
     def mostrar_cartas(cartas):
-        """Devuelve una descripción completas de una lista de cartas recibida."""
+        """Devuelve una descripción completa de una lista de cartas recibida como parámetro."""
         resultado = ''
         for carta in cartas:
             resultado += (f'{carta.describir()}, ')
@@ -65,26 +80,20 @@ class Carta:
 
     @staticmethod
     def mostrar_baraja():
-        """Devuelve una descripción completas de todas las cartas de la baraja."""
+        """Devuelve una descripción completa de todas las cartas de la baraja."""
         resultado = ''
-        for carta in Carta.baraja().values():
+        for carta in Carta.baraja(): # .values():
             resultado += (f'{carta.describir()}, ')
         return resultado
 
     @staticmethod
     def barajar():
         """Mezcla las cartas de la baraja de forma aleatoria."""
-        temp = list(Carta.baraja().values())
-        mezclar(temp)
-        Carta.__baraja = dict(zip(Carta.baraja(), temp))
+        # temp = list(Carta.baraja().values())
+        # mezclar(temp)
+        # Carta.__baraja = dict(zip(Carta.baraja(), temp))
+        Carta.__baraja = mezclar(Carta.baraja())
 
-    def describir(self):
-        """
-        Devuelve una descripción completa de una carta de la baraja.\n
-        Parámetros:
-            - seleccion: int -> La n-ésima carta de la baraja.
-        """
-        return f'[{self.corta()}] - {self.larga()}'
 
 
 class Naipe(Carta):
@@ -136,29 +145,20 @@ class Naipe(Carta):
             , 'Siete','Sota', 'Caballero', 'Rey']
         return f'{literales[valor-1]} de {palo}'
 
-    '''
-    @staticmethod
-    def mostrar_naipes():
-        """Descubre todas las naipes de de la baraja, devolviendo su
-        descripción corta y larga."""
-        resultado = ''
-        for naipe in Naipe.baraja().values():
-            resultado += (f'[{naipe.corta()}] - {naipe.larga()}, ')
-        return resultado
-    '''
-
     @staticmethod
     def repartir(cantidad):
         """Reparte una cantidad de cartas de la baraja, retirandolas de
         la misma y devolviéndolas."""
-        aux = []
+        # aux = iter(Naipe.baraja())
+        mano = []
         while cantidad > 0:
-            for numero in Naipe.baraja():
-                aux.append(Naipe.get_carta(numero))
-                del Naipe.baraja()[numero]
-                break
+            # for numero in Naipe.baraja():
+            #     aux.append(Naipe.get_carta(numero))
+            mano += Naipe.baraja()[0]
+            del Naipe.baraja()[0]
+            #     break
             cantidad -= 1
-        return aux
+        return mano
 
     def palo(self):
         """"Devuelve el palo de un naipe."""
