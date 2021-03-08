@@ -4,7 +4,14 @@ from carta import Carta
 VIDA_INICIAL = 4
 
 class Jugador:
-
+    """
+    Clase Jugador
+    ---
+    La clase Jugador representa a un jugador y almacena información \
+    sobre éste, compuesta principalmente por su nombre, su salud y \
+    su mano de cartas. Los jugadores pueden ser bots controlados por \
+    el programa.
+    """
     __ultimo = 0
     __jugadores = []
 
@@ -55,6 +62,9 @@ class Jugador:
 
     def recibir_mano(self, mano):
         self.__mano += mano
+
+    def devolver_mano(self):
+        pass
 
     @staticmethod
     def jugadores():
