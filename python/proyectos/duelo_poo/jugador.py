@@ -31,7 +31,7 @@ class Jugador:
         return f"Jugador('{self.__nombre}', '{self.__vida}, {self.__bot}'')"
 
     def __str__(self):
-        return f'{self.nombre()} | Salud: {self.vida()} | Mano:\n {Carta.mostrar_cartas(self.mano())}'
+        return f'{self.nombre()} | Salud: {self.vida()} | Mano({len(self.mano())}):\n {Carta.mostrar_cartas(self.mano())}'
 
     @staticmethod
     def get_jugador(seleccion):
@@ -64,6 +64,7 @@ class Jugador:
         self.__mano += mano
 
     def devolver_mano(self):
+        # necesito que baraja sea una lista...
         pass
 
     @staticmethod
