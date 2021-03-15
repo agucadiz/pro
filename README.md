@@ -6,10 +6,11 @@ Repositorio de estudios para el módulo de programación en el IES Doñana. Curs
 Por cada carpeta dedicada a un lenguaje en concreto, encontraremos la siguiente estructura:
 - Ejercicios: Distintas actividades y práctcicas solicitadas y realizadas.
 - Exámenes: Cuestiones y respuestas de exámenes realizados.
+- Proyectos: Pequeños programas planteados como método de estudio.
 - Scripts: Distintos programas que se han realizado como parte de las distintas unidades del curso.
 
 ## Índice:
-Cada carpeta contiene de manera organizado el contenido por unidad didáctica. Las unidades corresponden con el curso de Programación ([pro.iesdonana.org](https://pro.iesdonana.org/)):
+Las unidades y ejercicios corresponden con el módulo de Programación del IES Doñana ([pro.iesdonana.org](https://pro.iesdonana.org/)):
 
 | Nº | Título |
 |---:|:-------|
