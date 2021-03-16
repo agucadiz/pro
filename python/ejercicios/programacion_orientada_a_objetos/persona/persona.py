@@ -65,6 +65,7 @@ print('Vamos a comenzar creando tres instancias de la clase Persona.\n'\
     'En este caso, requerimos de los parámetros "nombre" y "edad".\n'\
     'Al método init ambién se le denomina "constructor de la clase".\n'\
         f'     >>> p1 = {p1}\n     >>> p2 = {p2}\n     >>> p3 = {p3}')
+input('Pulse cualquier tecla para continuar...')
 print()
 
 print('----------<<<El método mágico __eq__>>>----------')
@@ -73,15 +74,17 @@ print('Hemos definido un metodo eq que reconoce que dos personas\n'\
 print(f'     >>> p1 is p3\n     {p1 is p3}')
 print(f'     >>> p1 == p3           | En realidad sucede -> '\
     'Persona.__eq__(p1, p2)\n     {p1 == p3}')
+input('Pulse cualquier tecla para continuar...')
 print()
 
 print('----------<<<El método mágico __hash__>>>----------')
 print('Definimos un método hash que es elquivalente al hash de una \n'\
     'lista que contiene el nombre y la edad de la instancia:\n')
 print(f'     >>> hash(p1)\n     {hash(p1)}   | Equivale a -> '\
-    'hash((p1.__nombre, p1.__edad))')
+    'hash((p1.__nombre, p1.__edad)) [mirar línea 25]')
 print(f'     >>> hash(p3)\n     {hash(p3)}')
 print(f'     >>>hash(p1) == hash(p3)\n     {hash(p1) == hash(p3)}')
+input('Pulse cualquier tecla para continuar...')
 print()
 
 print('----------<<<El método mágico __repr__>>>----------')
@@ -94,5 +97,5 @@ print(f'     >>> p1\n     __main__.Persona object at 0x00000257876D1CD0\n')
 print('  - Con método repr definido:')
 print(f'     >>> p1\n     {p1}')
 print('\nRecuerda que el método se define en la clase, no en la instancia:\n')
-print(f'     >>> Persona.__repr__(p1)\n     {Persona.__repr__(p1)}')
+print(f'     >>> Persona.__repr__(p1)\n     {Persona.__repr__(p1)}\n')
 input('Pulse cualquier tecla para finalizar...')
