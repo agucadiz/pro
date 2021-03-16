@@ -63,23 +63,31 @@ print('Vamos a comenzar creando tres instancias de la clase Persona.\n'\
         '     >>> def __init__(self, nombre, edad)\n'\
     '\n'
     'En este caso, requerimos de los parámetros "nombre" y "edad".\n'\
-    'Al método init ambién se le denomina "constructor de la clase".\n'\
+    'Al método init también se le denomina "constructor de la clase".\n'\
         f'     >>> p1 = {p1}\n     >>> p2 = {p2}\n     >>> p3 = {p3}')
 input('Pulse cualquier tecla para continuar...')
 print()
 
 print('----------<<<El método mágico __eq__>>>----------')
-print('Hemos definido un metodo eq que reconoce que dos personas\n'\
-    'son lo mismo, si su nombre y edad son iguales. Por eso:\n')
+print('Por defecto, este método viene predefinido, de manera \n'\
+    'que devolvera True si dos objetos son identicos (is).\n'\
+    ' Nosotros podriamos considerar que dos objetos son iguales \n'\
+    'cuando sus atributos tienen el mismo valor. Por eso hemos \n'\
+    'definido un metodo eq que reconoce que dos personas\n'\
+    'son la misma, si su nombre y edad son iguales. Por eso:\n')
 print(f'     >>> p1 is p3\n     {p1 is p3}')
 print(f'     >>> p1 == p3           | En realidad sucede -> '\
-    'Persona.__eq__(p1, p2)\n     {p1 == p3}')
+    f'Persona.__eq__(p1, p2)\n     {p1 == p3}')
 input('Pulse cualquier tecla para continuar...')
 print()
 
 print('----------<<<El método mágico __hash__>>>----------')
-print('Definimos un método hash que es elquivalente al hash de una \n'\
-    'lista que contiene el nombre y la edad de la instancia:\n')
+print('Recuerda que no todos los tipos de datos son hashables. \n'\
+    'En el caso de los objetos, a pesar de que estos son mutables, \n'\
+    'Algunos de sus atributos a menudo suelen permanecer intactos.\n'\
+    'En esta ocasión definimos un método hash que es elquivalente \n'\
+    'a calcular el hash de una lista que contiene el nombre y la \n'\
+    'edad de la persona:\n')
 print(f'     >>> hash(p1)\n     {hash(p1)}   | Equivale a -> '\
     'hash((p1.__nombre, p1.__edad)) [mirar línea 25]')
 print(f'     >>> hash(p3)\n     {hash(p3)}')
