@@ -42,10 +42,10 @@ class Persona:
         la salida estándar el resultado.
         """
         if self.__edad > otra.edad():
-            print (f'{otra.nombre()} es más viejo que yo')
+            print (f'{otra.nombre()} es más joven que yo')
         elif self.__edad == otra.edad():
             print (f'{otra.nombre()} tiene la misma edad que yo')
-        else: print (f'{otra.nombre()} es más joven que yo')
+        else: print (f'{otra.nombre()} es más viejo que yo')
 
 # if __name__ == '__main__':
 p1 = Persona('Paula', 21)
