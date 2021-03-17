@@ -3,7 +3,13 @@ class Persona:
     Clase Persona
     ---
     La clase persona representa a una persona, la cual se \
-    idenfitica por su nombre y su dni.
+    idenfitica por su nombre y su dni. \n
+
+    Atributos:\n
+        - nombre: str -> El nombre de la persona.
+        - dni: str -> El DNI de la persona.
+
+    Dos personas son iguales si tienen el mismo nombre y dni.
     """
     def __init__(self, nombre, dni):
         """Constructor de la clase Persona."""
@@ -60,8 +66,8 @@ print('\n|          Repaso de los métodos mágicos           |\n')
 print('----------<<< El método mágico __init__ >>>----------')
 print('Vamos a comenzar creando tres instancias de la clase Persona.\n'\
     'Ésto se produce gracias al método init que,como su nombre indica,\n'\
-    'inicializa los atributos de una clase que se pretende instanciar.\n'\
-    'Por lo tanto, habrá que pasarle tantos parámetros como precise.\n'\
+    'inicializa los atributos de instancia de una clase que se pretende \n'\
+    'instanciar. Habrá que pasarle tantos parámetros como precise.\n'\
     '\n'
     '  - Ejemplo de signaruta de un método init:\n'\
         '     >>> def __init__(self, nombre, dni)\n'\
